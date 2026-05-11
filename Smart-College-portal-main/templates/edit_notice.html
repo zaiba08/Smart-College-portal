@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Notice{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Edit Notice</h2>
+    <p class="text-muted">Update the notice details</p>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" name="title" value="{{ notice.title }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" name="description" rows="5" required>{{ notice.description }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" name="date" value="{{ notice.date }}" required>
+            </div>
+            <div class="d-flex justify-content-between">
+                <a href="/admin/notices" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Notices
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
