@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Mark Attendance{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Mark Student Attendance</h2>
+    <p class="text-muted">Update attendance records for all students at once</p>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="subject" class="form-label">
+                    <i class="fas fa-book"></i> Subject
+                </label>
+                <input type="text" name="subject" class="form-control" id="subject" required placeholder="Enter subject name">
+            </div>
+            <div class="mb-4">
+                <label for="attendance_csv" class="form-label">
+                    <i class="fas fa-file-csv"></i> Import CSV (student_id,subject,percentage)
+                </label>
+                <input type="file" name="attendance_csv" class="form-control" id="attendance_csv" accept=".csv">
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Email</th>
+                            <th>Attendance %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for student in students %}
+                        <tr>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>
+                                <input type="hidden" name="student_ids" value="{{ student.id }}">
+                                <input type="number" name="percentage_{{ student.id }}" class="form-control" min="0" max="100" placeholder="0-100">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/dashboard" class="btn btn-outline-secondary me-md-2">
+                    <i class="fas fa-times"></i> Cancel
+                </a>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i> Mark Attendance for All
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="text-center mt-4">
+    <a href="/dashboard" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+</div>
+{% endblock %}
