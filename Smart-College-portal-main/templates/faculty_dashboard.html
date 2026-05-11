@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Faculty Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Faculty Dashboard</h2>
+    <p class="text-muted">Manage student records and academic data</p>
+</div>
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-user-check fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">Students</h5>
+                <p class="display-6 mb-0">{{ total_students }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-file-alt fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Assignments</h5>
+                <p class="display-6 mb-0">{{ assignment_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Avg Attendance</h5>
+                <p class="display-6 mb-0">{{ avg_attendance }}%</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Avg Marks</h5>
+                <p class="display-6 mb-0">{{ avg_marks }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4 mt-3">
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Actions</h5>
+                <div class="d-grid gap-2">
+                    <a href="/faculty/attendance" class="btn btn-primary">Mark Attendance</a>
+                    <a href="/faculty/results" class="btn btn-success">Upload Results</a>
+                    <a href="/faculty/assignments" class="btn btn-warning">Manage Assignments</a>
+                    <a href="/profile" class="btn btn-outline-secondary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Faculty Overview</h5>
+                <p><strong>{{ assignment_count }}</strong> active assignments created by you.</p>
+                <p>Campus average attendance is <strong>{{ avg_attendance }}%</strong>.</p>
+                <p>Campus average marks are <strong>{{ avg_marks }}</strong>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

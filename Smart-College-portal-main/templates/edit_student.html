@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Student{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Edit Student</h2>
+    <p class="text-muted">Update the student profile details</p>
+</div>
+<div class="card">
+    <div class="card-body">
+        <form method="post">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" value="{{ student.name }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" value="{{ student.email }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" value="{{ student.password }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Department</label>
+                    <input type="text" class="form-control" name="department" value="{{ student.department }}" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Semester</label>
+                    <select class="form-control" name="semester" required>
+                        {% for sem in range(1, 9) %}
+                        <option value="{{ sem }}" {% if student.semester == sem %}selected{% endif %}>{{ sem }}{% if sem == 1 %}st{% elif sem == 2 %}nd{% elif sem == 3 %}rd{% else %}th{% endif %} Semester</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="/admin/students" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Students
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

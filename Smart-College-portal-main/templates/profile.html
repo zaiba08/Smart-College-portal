@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Your Profile</h2>
+    <p class="text-muted">Review your account details</p>
+</div>
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title mb-4">{{ role|capitalize }} Profile</h5>
+                <dl class="row mb-4">
+                    <dt class="col-sm-4">Name</dt>
+                    <dd class="col-sm-8">{{ user.name }}</dd>
+
+                    <dt class="col-sm-4">Email</dt>
+                    <dd class="col-sm-8">{{ user.email }}</dd>
+
+                    {% if role == 'student' %}
+                    <dt class="col-sm-4">Department</dt>
+                    <dd class="col-sm-8">{{ user.department }}</dd>
+
+                    <dt class="col-sm-4">Semester</dt>
+                    <dd class="col-sm-8">{{ user.semester }}</dd>
+                    {% elif role == 'faculty' %}
+                    <dt class="col-sm-4">Subject</dt>
+                    <dd class="col-sm-8">{{ user.subject }}</dd>
+                    {% endif %}
+                </dl>
+                <div class="d-grid gap-2">
+                    <a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+                    <a href="/logout" class="btn btn-outline-secondary">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

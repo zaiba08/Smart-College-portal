@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Student Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <h2>Student Dashboard</h2>
+    <p class="text-muted">Access your academic information</p>
+</div>
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-calendar-check fa-3x text-info mb-3"></i>
+                <h5 class="card-title">Attendance Records</h5>
+                <p class="display-6 mb-0">{{ attendance_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                <h5 class="card-title">Exam Results</h5>
+                <p class="display-6 mb-0">{{ result_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-file-alt fa-3x text-warning mb-3"></i>
+                <h5 class="card-title">Assignments</h5>
+                <p class="display-6 mb-0">{{ assignment_count }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card dashboard-card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="fas fa-graduation-cap fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">GPA</h5>
+                <p class="display-6 mb-0">{{ gpa }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4 mt-3">
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Performance Overview</h5>
+                <p>Average attendance: <strong>{{ avg_attendance }}%</strong></p>
+                <p>Average marks: <strong>{{ avg_marks }}</strong></p>
+                <p>Passed: <strong>{{ pass_count }}</strong> | Failed: <strong>{{ fail_count }}</strong></p>
+                <a href="/student/results" class="btn btn-success btn-sm">View Results</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Quick Actions</h5>
+                <div class="d-grid gap-2">
+                    <a href="/profile" class="btn btn-outline-primary">View Profile</a>
+                    <a href="/student/attendance" class="btn btn-outline-info">View Attendance</a>
+                    <a href="/student/assignments" class="btn btn-outline-warning">Assignments</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

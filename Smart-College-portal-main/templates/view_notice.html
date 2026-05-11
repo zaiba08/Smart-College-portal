@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Notice Details{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Notice Details</h2>
+    <p class="text-muted">View the full notice information</p>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div class="mb-3">
+            <h3>{{ notice.title }}</h3>
+            <p class="text-muted">{{ notice.date }}</p>
+        </div>
+        <div class="mb-4">
+            <p>{{ notice.description }}</p>
+        </div>
+        <div class="d-flex justify-content-between">
+            {% if admin %}
+            <a href="/admin/notices" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Notices
+            </a>
+            {% else %}
+            <a href="/notices" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Notices
+            </a>
+            {% endif %}
+            {% if admin %}
+            <a href="/admin/edit_notice/{{ notice.id }}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Edit Notice
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
